@@ -1,0 +1,46 @@
+{
+  "name": "jabana-school-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:client\" \"npm:dev:api\"",
+    "dev:client": "vite",
+    "dev:api": "tsx watch --tsconfig tsconfig.server.json backend/server/index.ts",
+    "build": "tsc -b && tsc -p tsconfig.server.json && vite build",
+    "build:api": "tsc -p tsconfig.server.json",
+    "admin:create": "tsx --tsconfig tsconfig.server.json backend/server/create-admin.ts",
+    "admin:create:prod": "node dist-server/create-admin.js",
+    "backup:db": "node backend/scripts/backup-database.mjs",
+    "lint": "oxlint",
+    "start": "node dist-server/index.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^1.47.0",
+    "mongoose": "^8.18.0",
+    "nodemailer": "^10.1.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.13.3",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.2.0",
+    "oxlint": "^1.81.0",
+    "tsx": "^4.20.5",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
